@@ -43,12 +43,12 @@ router.get('/user/:id',(req,res) => {
 })
 
 
-
-//delete user
-router.delete('/user/:id',(req,res) => {
-    const {id} = req.params;
+//delete users
+router.delete('/user/',(req,res) => {
+    const data = req.body;
+    if (data.length == 0) return res.status(400).json({ error: "No data to delete" })
     User
-    .deleteOne({_id:id}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+    .deleteMany({_id: { $in: data}}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
 })
 
 

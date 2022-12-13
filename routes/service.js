@@ -51,10 +51,11 @@ router.put('/service/:id',(req,res) => {
 
 
 //delete service
-router.delete('/service/:id',(req,res) => {
-    const {id} = req.params;
+router.delete('/service/',(req,res) => {
+    const data = req.body;
+    if (data.length == 0) return res.status(400).json({ error: "No data to delete" })
     serviceModel
-    .deleteOne({_id:id}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+    .deleteMany({_id: { $in: data}}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
 })
 
 

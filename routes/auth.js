@@ -5,6 +5,11 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const schemaRegister = Joi.object({
+    //integtrated but not required
+    _id: Joi.string(),
+    date: Joi.string(),
+    __v: Joi.number(),
+    //required and important
     name: Joi.string().min(6).max(255).required(),
     email: Joi.string().min(6).max(255).required().email(),
     password: Joi.string().min(6).max(1024).required(),
