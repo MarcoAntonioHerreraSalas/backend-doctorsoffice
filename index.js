@@ -33,6 +33,7 @@ const scheduleRoutes = require('./routes/schedule');
 const appointmentRoutes = require('./routes/appointment');
 const productRoutes = require('./routes/product');
 const saleRoutes = require('./routes/sale');
+const patientRoutes = require('./routes/patient');
 const verifyToken = require('./routes/validate-token');
 const corcs = require('./corcs');
 
@@ -45,6 +46,7 @@ app.use('/api/schedule',verifyToken, scheduleRoutes); //horario
 app.use('/api/appointment',verifyToken, appointmentRoutes); //citas
 app.use('/api/product',verifyToken, productRoutes); //productos
 app.use('/api/sale',verifyToken, saleRoutes); //ventas
+app.use('/api/patient',verifyToken, patientRoutes); //pacientes
 
 app.get('/', (req, res) => {
     res.json({
