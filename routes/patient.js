@@ -58,10 +58,19 @@ router.put('/edit-patient/:id',(req,res) => {
 
 
 //delete patient
-router.delete('/patient/:id',(req,res) => {
-    const {id} = req.params;
+// router.delete('/patient/:id',(req,res) => {
+//     const {id} = req.params;
+//     patientModel
+//     .deleteOne({_id:id}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+// })
+
+
+//delete patient
+router.delete('/patient/',(req,res) => {
+    const data = req.body;
+    if (data.length == 0) return res.status(400).json({ error: "No data to delete" })
     patientModel
-    .deleteOne({_id:id}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+    .deleteMany({_id: { $in: data}}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
 })
 
 

@@ -1,34 +1,19 @@
 const mongoose = require('mongoose');
+const Patient = require('./Patient');
+const Service = require('./Service');
 
 
 const appointmentSchema = mongoose.Schema({
-    title: {
-        type: String,
+    
+    patient:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Patient',
         required: true,
-        min: 5,
-        max: 255
     },
-    nombre: {
-        type: String,
-        required: true,
-        min: 5,
-        max: 1024
-    },
-    numero: {
-        type: String,
-        required: false,
-        min: 10,
-        max: 10,
-    },
-    servicio: {
-        type: String,
-        required: true,
-        minlength: 5
-    },
-    id_servicio: {
-        type: String,
-        required: true,
-        minlength: 5
+    service: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Service',
+        required: true
     },
     start: {
         type: Date,
