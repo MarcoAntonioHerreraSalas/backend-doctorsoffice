@@ -13,11 +13,15 @@ const patientSchema = mongoose.Schema({
         min: 6,
         max: 255
     },
-    age: {
-        type: Number,
+    phone_number: {
+        type: String,
         required: true,
-        min: 0,
-        max: 200
+        min: 10,
+        max: 10
+    },
+    birthday: {
+        type: Date,
+        required: true,
     },
     allergies: {
         type: String,

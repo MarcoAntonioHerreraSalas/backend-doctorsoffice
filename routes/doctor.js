@@ -5,7 +5,7 @@ const doctorModel = require('../models/Doctor');
 const schemaDoctor = Joi.object({
     name: Joi.string().required(),
     lastname: Joi.string().required(),
-    age: Joi.number().required(),
+    birthday: Joi.date().required(),
     phone_number: Joi.string().required(),
     personal_number: Joi.string().required(),
     speciality: Joi.string().required(),

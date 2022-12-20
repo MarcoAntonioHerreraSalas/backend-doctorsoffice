@@ -13,11 +13,9 @@ const doctorSchema = mongoose.Schema({
         min: 6,
         max: 255
     },
-    age: {
-        type: Number,
+    birthday: {
+        type: Date,
         required: true,
-        min: 0,
-        max: 200
     },
     phone_number: {
         type: String,
